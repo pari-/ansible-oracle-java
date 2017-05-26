@@ -1,0 +1,9 @@
+---
+
+- hosts: "{{ hosts_group | default('all') }}"
+
+  vars:
+    oracle_java8_apt_key_id: "EEA14886"
+
+  roles:
+    - { role: "{{ role_name | default('ansible-oracle-java8') }}", tags: ['oracle-java8'] }

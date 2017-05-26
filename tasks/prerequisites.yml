@@ -1,0 +1,6 @@
+---
+
+- name: fail unless we run on a supported distribution
+  fail:
+    msg: "Unfortunately, the 'oracle_java8'-role is not supported on {{ ansible_distribution_release }}! :-("
+  when: ansible_distribution_release|lower not in oracle_java8_supported_distro_list

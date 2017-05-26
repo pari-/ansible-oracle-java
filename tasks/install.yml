@@ -1,0 +1,32 @@
+---
+
+- name: add apt_key file
+  apt_key:
+    id: "{{ oracle_java8_apt_key_id }}"
+    keyserver: "{{ oracle_java8_keyserver }}"
+    state: "present"
+
+- name: add apt_repository
+  apt_repository:
+    repo: "{{ item }}"
+    state: "present"
+  with_items:
+    - "{{ oracle_java8_repo_list }}"
+
+- name: accept Oracle's Java License
+  debconf:
+    name: "oracle-java8-installer"
+    question: "shared/accepted-oracle-license-v1-1"
+    value: "true"
+    vtype: "select"
+
+- name: install packages
+  apt:
+    name: "{{ item }}"
+    update_cache: "{{ oracle_java8_update_cache|default(omit) }}"
+    cache_valid_time: "{{ oracle_java8_cache_valid_time|default(omit) }}"
+    state: "present"
+    default_release: "{{ oracle_java8_default_release|default(omit) }}"
+  with_items:
+    - "{{ oracle_java8_package_list }}"
+
