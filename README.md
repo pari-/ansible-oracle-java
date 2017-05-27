@@ -1,4 +1,4 @@
-# oracle_java8
+# oracle-java8
 
 [![Build Status](https://travis-ci.org/pari-/ansible-oracle-java8.svg?branch=master)](https://travis-ci.org/pari-/ansible-oracle-java8)
 
@@ -55,10 +55,10 @@ variable | default | notes
 variable | default | notes
 -------- | ------- | -----
 `cache_valid_time` | `3600` | `Update the apt cache if its older than the set value (in seconds)` |
-`default_release` | `{{ oracle_java8_repo_mapping[ansible_distribution|lower] }}` | `The default release to install packages from` |
-`oracle_java8_keyserver` | `keyserver.ubuntu.com` | `The keyserver to retrieve key from` | 
+`default_release` | `{{ oracle_java8_repo_mapping[ansible_distribution\|lower] }}` | `The default release to install packages from` |
+`keyserver` | `keyserver.ubuntu.com` | `The keyserver to retrieve key from` | 
 `package_list` | `['oracle-java8-installer', 'oracle-java8-set-default']` | `The list of packages to be installed`
-`repo_list` | `["deb http://ppa.launchpad.net/webupd8team/java/ubuntu {{ oracle_java8_repo_mapping[ansible_distribution|lower] }} main"]` | `Source strings for the repositories`
+`repo_list` | `["deb http://ppa.launchpad.net/webupd8team/java/ubuntu {{ oracle_java8_repo_mapping[ansible_distribution\|lower] }} main"]` | `Source strings for the repositories` |
 `repo_mapping['debian']` | `xenial` | `A variable used to do proper repository mapping for different debian-based distributions` |
 `repo_mapping['ubuntu']` | `{{ ansible_distribution_release }}` | `A variable used to do proper repository mapping for different debian-based distributions` |
 `supported_distro_list` | `['jessie', 'trusty']` | `A list of distribution releases this role supports`
