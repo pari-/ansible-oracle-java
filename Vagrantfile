@@ -8,6 +8,7 @@ VM_MEM = 1024
 VM_CPUS = 1
 VM_COUNT = 1
 VM_NAME = "vm"
+VM_GROUP_NAME = "vm"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   (1..VM_COUNT).each do |i|
@@ -21,8 +22,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       end
 
       subconfig.vm.provision :ansible do |ansible|
+#        ansible.tags = 'configure'
         ansible.playbook = "test.yml"
         ansible.sudo = true
+        ansible.groups = {
+           "#{VM_NAME}" => "[#{VM_GROUP_NAME}]"
+        }
       end
     end
   end

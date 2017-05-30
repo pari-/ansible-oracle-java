@@ -13,9 +13,11 @@ oracle_java8_supported_distro_list:
 oracle_java8_repo_mapping:
   debian: "xenial"
   ubuntu: "{{ ansible_distribution_release }}"
-oracle_java8_repo_list:
-  - "deb http://ppa.launchpad.net/webupd8team/java/ubuntu {{ oracle_java8_repo_mapping[ansible_distribution|lower] }} main"
-oracle_java8_keyserver: "keyserver.ubuntu.com"
+oracle_java8_apt_repo_list:
+  - repo: "deb http://ppa.launchpad.net/webupd8team/java/ubuntu {{ oracle_java8_repo_mapping[ansible_distribution|lower] }} main"
+    key:
+      keyserver: "keyserver.ubuntu.com"
+      id: "EEA14886"
 oracle_java8_package_list:
   - "oracle-java8-installer"
   - "oracle-java8-set-default"

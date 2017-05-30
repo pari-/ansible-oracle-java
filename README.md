@@ -8,9 +8,7 @@ An Ansible role which installs and configures Oracle's Java 8
 
 - [Requirements](#requirements)
 - [Example](#example)
-- [Variables](#variables)
-  * [Role Variables](#role-variables)
-  * [Role Internals](#role-internals)
+- [Role Variables](#role-variables)
 - [Dependencies](#dependencies)
 - [License](#license)
 - [Author Information](#author-information)
@@ -34,31 +32,23 @@ Ansible version compatibility:
 - hosts: oracle_java8-hosts
 
   vars:
-    oracle_java8_apt_key_id: "EEA14886"
 
   roles: 
     - "ansible-oracle_java8"
 ```
 
-## Variables
+## Role Variables
 
 Available variables are listed below, along with default values (see defaults/main.yml). They're generally prefixed with `oracle_java8_` (which I deliberately leave out here for better formatting).
-
-### Role Variables
-
-variable | default | notes
--------- | ------- | -----
-`apt_key_id` | `EEA14886` | `The identifier for the key of the webupd8team/java repository. Including this allows check mode to correctly report the changed state`
-
-### Role Internals
 
 variable | default | notes
 -------- | ------- | -----
 `cache_valid_time` | `3600` | `Update the apt cache if its older than the set value (in seconds)` |
 `default_release` | `{{ oracle_java8_repo_mapping[ansible_distribution\|lower] }}` | `The default release to install packages from` |
-`keyserver` | `keyserver.ubuntu.com` | `The keyserver to retrieve key from` | 
 `package_list` | `['oracle-java8-installer', 'oracle-java8-set-default']` | `The list of packages to be installed`
-`repo_list` | `["deb http://ppa.launchpad.net/webupd8team/java/ubuntu {{ oracle_java8_repo_mapping[ansible_distribution\|lower] }} main"]` | `Source strings for the repositories` |
+`repo_list[0]['repo']` | `deb http://ppa.launchpad.net/webupd8team/java/ubuntu {{ oracle_java8_repo_mapping[ansible_distribution\|lower] }} main` | `Source strings for the repositories` |
+`repo_list[0]['repo']['key']['keyserver']` | `keyserver.ubuntu.com` | `Keyserver to retrieve the key (for the repository) from` |
+`repo_list[0]['repo']['key']['id']` | `EEA14886` | `Identifier of (the repository) key` |
 `repo_mapping['debian']` | `xenial` | `A variable used to do proper repository mapping for different debian-based distributions` |
 `repo_mapping['ubuntu']` | `{{ ansible_distribution_release }}` | `A variable used to do proper repository mapping for different debian-based distributions` |
 `supported_distro_list` | `['jessie', 'trusty']` | `A list of distribution releases this role supports`
