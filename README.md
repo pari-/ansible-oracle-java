@@ -31,12 +31,12 @@ Ansible version compatibility:
 ```yaml
 ---
 
-- hosts: oracle_java8-hosts
+- hosts: "{{ hosts_group | default('all') }}"
 
   vars:
 
-  roles: 
-    - "ansible-oracle_java8"
+  roles:
+    - { role: "{{ role_name | default('ansible-oracle-java8') }}", tags: ['oracle-java8'] }
 ```
 
 ## Role Variables
@@ -50,12 +50,10 @@ variable | default | notes
 `package_list` | `['oracle-java8-installer', 'oracle-java8-set-default']` | `The list of packages to be installed`
 `pre_default_release` | `{{ oracle_java8_default_release }}` | `The default release to install packages (pre_package_list) from`
 `pre_package_list` | `['apt-transport-https','ca-certificates']` | `The list of prerequisite packages to be installed`
-`repo_list[0]['repo']` | `deb http://ppa.launchpad.net/webupd8team/java/ubuntu {{ oracle_java8_repo_mapping[ansible_distribution\|lower] }} main` | `Source string for the repositories`
+`repo_list[0]['repo']` | `deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main` | `Source string for the repositories`
 `repo_list[0]['repo']['key']['keyserver']` | `keyserver.ubuntu.com` | `Keyserver to retrieve the key (for the repository) from`
 `repo_list[0]['repo']['key']['id']` | `EEA14886` | `Identifier of (the repository) key`
-`repo_mapping['debian']` | `xenial` | `A variable used to do proper repository mapping for different debian-based distributions`
-`repo_mapping['ubuntu']` | `{{ ansible_distribution_release }}` | `A variable used to do proper repository mapping for different debian-based distributions`
-`supported_distro_list` | `['jessie', 'trusty']` | `A list of distribution releases this role supports`
+`supported_distro_list` | `['jessie']` | `A list of distribution releases this role supports`
 `update_cache` | `yes` | `Run the equivalent of apt-get update before the operation`
 
 ## Dependencies
