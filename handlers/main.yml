@@ -1,6 +1,0 @@
----
-
-- name: restart oracle_java8
-  service:
-    name: "{{ oracle_java8_service_name }}"
-    state: restarted
