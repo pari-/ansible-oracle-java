@@ -16,4 +16,5 @@ oracle_java8_repo_list:
       id: "EEA14886"
 oracle_java8_supported_distro_list:
   - "jessie"
+  - "stretch"
 oracle_java8_update_cache: "yes"
