@@ -46,9 +46,9 @@ Available variables are listed below, along with default values (see defaults/ma
 variable | default | notes
 -------- | ------- | -----
 `cache_valid_time` | `3600` | `Update the apt cache if its older than the set value (in seconds)`
-`default_release` | `{{ oracle_java8_default_release\|lower] }}` | `The default release to install packages from`
+`default_release` | `xenial` | `The default release to install packages from`
 `package_list` | `['oracle-java8-installer', 'oracle-java8-set-default']` | `The list of packages to be installed`
-`pre_default_release` | `{{ oracle_java8_default_release }}` | `The default release to install packages (pre_package_list) from`
+`pre_default_release` | `{{ ansible_distribution_release\|lower }}` | `The default release to install packages (pre_package_list) from`
 `pre_package_list` | `['apt-transport-https','ca-certificates']` | `The list of prerequisite packages to be installed`
 `repo_list[0]['repo']` | `deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main` | `Source string for the repositories`
 `repo_list[0]['repo']['key']['keyserver']` | `keyserver.ubuntu.com` | `Keyserver to retrieve the key (for the repository) from`

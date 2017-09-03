@@ -5,7 +5,7 @@ oracle_java8_default_release: "xenial"
 oracle_java8_package_list:
   - "oracle-java8-installer"
   - "oracle-java8-set-default"
-oracle_java8_pre_default_release: "{{ ansible_distribution_release }}"
+oracle_java8_pre_default_release: "{{ ansible_distribution_release|lower }}"
 oracle_java8_pre_package_list:
   - "apt-transport-https"
   - "ca-certificates"
