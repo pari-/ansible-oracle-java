@@ -5,7 +5,7 @@ galaxy_info:
   description: "An Ansible role which installs and configures Oracle's Java 8"
   dependencies: []
   license: "MIT"
-  min_ansible_version: "2.0.2.0"
+  min_ansible_version: "2.1.6.0"
   galaxy_tags:
     - "oracle_java8"
     - "java"

@@ -8,7 +8,7 @@ An Ansible role which installs and configures Oracle's Java 8
 
 - [Requirements](#requirements)
 - [Example](#example)
-- [Role Variables](#role-variables)
+- [Defaults](#defaults)
 - [Dependencies](#dependencies)
 - [License](#license)
 - [Author Information](#author-information)
@@ -21,25 +21,24 @@ Currently this role is developed for and tested on Debian GNU/Linux (release: st
 
 Ansible version compatibility:
 
-- __2.3.2.0__ (current version in use for development of this role) 
+- __2.4.0.0__ (current version in use for development of this role) 
+- 2.3.2.0
 - 2.2.3.0
 - 2.1.6.0
-- 2.0.2.0
 
 ## Example
 
 ```yaml
 ---
 
-- hosts: "{{ hosts_group | default('all') }}"
-
-  vars:
-
+- hosts: "all"
   roles:
-    - { role: "{{ role_name | default('ansible-oracle-java8') }}", tags: ['oracle-java8'] }
+    - role: "ansible-oracle-java8"
+      tags:
+        - "oracle-java8"
 ```
 
-## Role Variables
+## Defaults
 
 Available variables are listed below, along with default values (see defaults/main.yml). They're generally prefixed with `oracle_java8_` (which I deliberately leave out here for better formatting).
 
