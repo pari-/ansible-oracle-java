@@ -21,7 +21,7 @@ Currently this role is developed for and tested on Debian GNU/Linux (release: st
 
 Ansible version compatibility:
 
-- __2.4.0.0__ (current version in use for development of this role) 
+- __2.4.1.0__ (current version in use for development of this role) 
 - 2.3.2.0
 - 2.2.3.0
 - 2.1.6.0
@@ -36,6 +36,11 @@ Ansible version compatibility:
     - role: "ansible-oracle-java8"
       tags:
         - "oracle-java8"
+  post_tasks:
+    - block:
+        - include: "tests/test_compile_hello_world.yml"
+      tags:
+        - "tests"
 ```
 
 ## Defaults
@@ -46,6 +51,7 @@ variable | default | notes
 -------- | ------- | -----
 `cache_valid_time` | `3600` | `Update the apt cache if its older than the set value (in seconds)`
 `default_release` | `xenial` | `The default release to install packages from`
+`major_version` | `8` | `The default major version of Oracle Java to be installed`
 `package_list` | `['oracle-java8-installer', 'oracle-java8-set-default']` | `The list of packages to be installed`
 `pre_default_release` | `{{ ansible_distribution_release\|lower }}` | `The default release to install packages (pre_package_list) from`
 `pre_package_list` | `['apt-transport-https','ca-certificates']` | `The list of prerequisite packages to be installed`
