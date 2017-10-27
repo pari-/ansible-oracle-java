@@ -5,3 +5,8 @@
     - role: "ansible-oracle-java8"
       tags:
         - "oracle-java8"
+  post_tasks:
+    - block:
+        - include: "tests/test_compile_hello_world.yml"
+      tags:
+        - "tests"

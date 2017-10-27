@@ -1,0 +1,33 @@
+---
+
+- name: "create temp dir"
+  command: "mktemp -d"
+  register: "_temp_dir"
+  changed_when: False
+
+- name: "ship HelloWorld.java"
+  copy:
+    src: "HelloWorld.java"
+    dest: "{{ _temp_dir['stdout'] }}/HelloWorld.java"
+  changed_when: False
+
+- name: "compile HelloWorld.java"
+  command: "javac -d {{ _temp_dir['stdout'] }}/ {{ _temp_dir['stdout'] }}/HelloWorld.java"
+  changed_when: False
+
+- name: "execute HelloWorld"
+  command: "java -cp {{ _temp_dir['stdout'] }}/ HelloWorld"
+  register: "_result"
+  changed_when: False
+
+- name: "remove temp dir"
+  file:
+    state: "absent"
+    path: "{{ _temp_dir['stdout'] }}"
+  changed_when: False
+
+- name: "fail when running HelloWorld does not yield expected output"
+  fail:
+    msg: "'{{ _result.stdout }}' != 'Hello, World.'"
+  when:
+    - "_result.stdout != 'Hello, World.'"
