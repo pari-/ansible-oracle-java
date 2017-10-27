@@ -3,13 +3,15 @@
 galaxy_info:
   author: "Patrick Ringl"
   dependencies: []
-  description: "An Ansible role which installs and configures Oracle's Java 8"
+  description: "An Ansible role which installs and configures Oracle's Java /[89]/"
   license: "MIT"
   min_ansible_version: "2.1.6.0"
   galaxy_tags:
     - "oracle_java8"
+    - "oracle_java9"
     - "java"
     - "java8"
+    - "java9"
     - "oracle"
   platforms:
     - name: "Debian"

@@ -1,8 +1,8 @@
-# oracle-java8
+# oracle-java
 
-[![Build Status](https://travis-ci.org/pari-/ansible-oracle-java8.svg?branch=master)](https://travis-ci.org/pari-/ansible-oracle-java8)
+[![Build Status](https://travis-ci.org/pari-/ansible-oracle-java.svg?branch=master)](https://travis-ci.org/pari-/ansible-oracle-java)
 
-An Ansible role which installs and configures Oracle's Java 8
+An Ansible role which installs and configures Oracle's Java /[89]/
 
 <!-- toc -->
 
@@ -33,9 +33,9 @@ Ansible version compatibility:
 
 - hosts: "all"
   roles:
-    - role: "ansible-oracle-java8"
+    - role: "ansible-oracle-java"
       tags:
-        - "oracle-java8"
+        - "oracle-java"
   post_tasks:
     - block:
         - include: "tests/test_compile_hello_world.yml"
@@ -45,14 +45,14 @@ Ansible version compatibility:
 
 ## Defaults
 
-Available variables are listed below, along with default values (see defaults/main.yml). They're generally prefixed with `oracle_java8_` (which I deliberately leave out here for better formatting).
+Available variables are listed below, along with default values (see defaults/main.yml). They're generally prefixed with `oracle_java_` (which I deliberately leave out here for better formatting).
 
 variable | default | notes
 -------- | ------- | -----
 `cache_valid_time` | `3600` | `Update the apt cache if its older than the set value (in seconds)`
 `default_release` | `xenial` | `The default release to install packages from`
 `major_version` | `8` | `The default major version of Oracle Java to be installed`
-`package_list` | `['oracle-java8-installer', 'oracle-java8-set-default']` | `The list of packages to be installed`
+`package_list` | `['oracle-java{{ oracle_java_major_version}}-installer', 'oracle-java{{ oracle_java_major_version}}-set-default']` | `The list of packages to be installed`
 `pre_default_release` | `{{ ansible_distribution_release\|lower }}` | `The default release to install packages (pre_package_list) from`
 `pre_package_list` | `['apt-transport-https','ca-certificates']` | `The list of prerequisite packages to be installed`
 `repo_list[0]['repo']` | `deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main` | `Source string for the repositories`
