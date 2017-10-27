@@ -1,21 +1,21 @@
 ---
 
-oracle_java8_cache_valid_time: 3600
-oracle_java8_default_release: "xenial"
-oracle_java8_package_list:
-  - "oracle-java{{ oracle_java8_major_version }}-installer"
-  - "oracle-java{{ oracle_java8_major_version }}-set-default"
-oracle_java8_pre_default_release: "{{ ansible_distribution_release|lower }}"
-oracle_java8_pre_package_list:
+oracle_java_cache_valid_time: 3600
+oracle_java_default_release: "xenial"
+oracle_java_package_list:
+  - "oracle-java{{ oracle_java_major_version }}-installer"
+  - "oracle-java{{ oracle_java_major_version }}-set-default"
+oracle_java_pre_default_release: "{{ ansible_distribution_release|lower }}"
+oracle_java_pre_package_list:
   - "apt-transport-https"
   - "ca-certificates"
-oracle_java8_repo_list:
+oracle_java_repo_list:
   - repo: "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main"
     key:
       keyserver: "keyserver.ubuntu.com"
       id: "EEA14886"
-oracle_java8_supported_distro_list:
+oracle_java_supported_distro_list:
   - "jessie"
   - "stretch"
-oracle_java8_update_cache: "yes"
-oracle_java8_major_version: 8
+oracle_java_update_cache: "yes"
+oracle_java_major_version: 8

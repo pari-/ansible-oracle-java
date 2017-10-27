@@ -2,9 +2,9 @@
 
 - hosts: "all"
   roles:
-    - role: "ansible-oracle-java8"
+    - role: "ansible-oracle-java"
       tags:
-        - "oracle-java8"
+        - "oracle-java"
   post_tasks:
     - block:
         - include: "tests/test_compile_hello_world.yml"
