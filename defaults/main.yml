@@ -15,7 +15,6 @@ oracle_java_repo_list:
       keyserver: "keyserver.ubuntu.com"
       id: "EEA14886"
 oracle_java_supported_distro_list:
-  - "jessie"
   - "stretch"
 oracle_java_update_cache: "yes"
 oracle_java_major_version: 8

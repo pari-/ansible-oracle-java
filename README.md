@@ -19,12 +19,7 @@ An Ansible role which installs and configures Oracle's Java /[89]/
 
 Currently this role is developed for and tested on Debian GNU/Linux (release: stretch). It is assumed to work on other Debian distributions as well.
 
-Ansible version compatibility:
-
-- __2.4.3.0__ (current version in use for development of this role)
-- 2.3.3.0
-- 2.2.3.0
-- 2.1.6.0
+Ansible version compatibility: [Dockerfile](https://github.com/pari-/docker-debian-ansible/blob/master/debian/stretch/Dockerfile)
 
 ## Example
 
@@ -58,7 +53,7 @@ variable | default | notes
 `repo_list[0]['repo']` | `deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main` | `Source string for the repositories`
 `repo_list[0]['repo']['key']['keyserver']` | `keyserver.ubuntu.com` | `Keyserver to retrieve the key (for the repository) from`
 `repo_list[0]['repo']['key']['id']` | `EEA14886` | `Identifier of (the repository) key`
-`supported_distro_list` | `['jessie', 'stretch']` | `A list of distribution releases this role supports`
+`supported_distro_list` | `['stretch']` | `A list of distribution releases this role supports`
 `update_cache` | `yes` | `Run the equivalent of apt-get update before the operation`
 
 ## Dependencies
